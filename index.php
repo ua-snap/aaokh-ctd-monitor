@@ -35,12 +35,14 @@
         return array_slice($sortedFiles, 0, $quantity);
       }
 
+      print '<h2>Plots</h2>';
       $recentPlots = getRecentFiles($plotDirectory, $plotQuantity);
       foreach ($recentPlots as $plotFile) {
         print '<h3>' . date('F d Y', filemtime($plotFile)) . '</h3>';
         print '<a href="' . $plotFile . '"><img src="' . $plotFile . '" class="plot"></a>';
       }
 
+      print '<h2>Download data</h2>';
       print '<ul>';
       $recentData = getRecentFiles($dataDirectory, $dataQuantity);
       foreach ($recentData as $dataFile) {
