@@ -38,7 +38,7 @@
       print '<h2>Plots</h2>';
       $recentPlots = getRecentFiles($plotDirectory, $plotQuantity);
       foreach ($recentPlots as $plotFile) {
-        print '<h3>' . date('F d Y', filemtime($plotFile)) . '</h3>';
+        print '<h3>' . date('F j, Y', filemtime($plotFile)) . '</h3>';
         print '<a href="' . $plotFile . '"><img src="' . $plotFile . '" class="plot"></a>';
       }
 
@@ -46,7 +46,7 @@
       print '<ul>';
       $recentData = getRecentFiles($dataDirectory, $dataQuantity);
       foreach ($recentData as $dataFile) {
-        print '<li><a href="' . $dataFile . '">' . date('F d Y', filemtime($dataFile)) . '</a></li>';
+        print '<li><a href="' . $dataFile . '">' . date('F j, Y', filemtime($dataFile)) . '</a></li>';
       }
       print '</ul>';
     ?>
