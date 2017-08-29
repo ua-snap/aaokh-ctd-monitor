@@ -14,8 +14,10 @@
     <div class="container">
     <?php
       $directory = 'plots';
+      $ignored = array('.', '..');
+
       foreach (scandir($directory) as $file) {
-        if (!in_array($file, array('.', '..'))) {
+        if (!in_array($file, $ignored)) {
           $fullPath = $directory . '/' . $file;
           print '<h3>' . date('F d Y', filemtime($fullPath)) . '</h3>';
           print '<a href="' . $fullPath . '"><img src="' . $fullPath . '" class="plot"></a>'; 
