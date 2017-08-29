@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8">
     <title>AAOKH CTD Data</title>
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"></link>
-    <link rel="stylesheet" type="text/css" href="css/style.css"></link>
+    <link rel="shortcut icon" href="includes/favicon.ico" type="image/x-icon"></link>
+    <link rel="stylesheet" type="text/css" href="includes/style.css"></link>
   </head>
   <body>
     <div class="header">
       <div class="container">
-        <img src="images/aaokh_header.png" />
+        <img src="includes/aaokh_header.png" />
       </div>
     </div>
     <div class="container">
