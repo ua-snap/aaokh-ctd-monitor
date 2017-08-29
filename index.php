@@ -20,9 +20,8 @@
       $dataDirectory = 'data';
       $dataQuantity = 3;
 
-      $ignored = array('.', '..');
-
       function getRecentFiles($directory, $quantity) {
+        $ignored = array('.', '..');
         $fileTimes = array();
         foreach (scandir($directory) as $file) {
           if (!in_array($file, $ignored)) {
@@ -31,7 +30,7 @@
           }
         }
 
-        asort($fileTimes);
+        arsort($fileTimes);
         $sortedFiles = array_keys($fileTimes);
         return array_slice($sortedFiles, 0, $quantity);
       }
