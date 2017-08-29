@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>AAOKH CTD Data</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"></link>
     <link rel="stylesheet" type="text/css" href="css/style.css"></link>
   </head>
   <body>
