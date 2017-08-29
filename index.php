@@ -15,24 +15,26 @@
     <?php
       $plotDirectory = 'plots';
       $plotQuantity = 3;
-
       $ignored = array('.', '..');
 
-      $fileTimes = array();
-      foreach (scandir($plotDirectory) as $file) {
-        if (!in_array($file, $ignored)) {
-          $fullPath = $plotDirectory . '/' . $file;
-          $fileTimes[$fullPath] = filemtime($fullPath);
+      function getRecentFiles($directory, $quantity) {
+        $fileTimes = array();
+        foreach (scandir($directory) as $file) {
+          if (!in_array($file, $ignored)) {
+            $fullPath = $directory . '/' . $file;
+            $fileTimes[$fullPath] = filemtime($fullPath);
+          }
         }
+
+        asort($fileTimes);
+        $sortedFiles = array_keys($fileTimes);
+        return array_slice($sortedFiles, 0, $quantity);
       }
 
-      asort($fileTimes);
-      $sortedFiles = array_keys($fileTimes);
-      $topFiles = array_slice($sortedFiles, 0, $plotQuantity);
-
-      foreach ($topFiles as $file) {
-        print '<h3>' . date('F d Y', filemtime($file)) . '</h3>';
-        print '<a href="' . $file . '"><img src="' . $file . '" class="plot"></a>';
+      $recentPlots = getRecentFiles($plotDirectory, $plotQuantity);
+      foreach ($recentPlots as $plotFile) {
+        print '<h3>' . date('F d Y', filemtime($plotFile)) . '</h3>';
+        print '<a href="' . $plotFile . '"><img src="' . $plotFile . '" class="plot"></a>';
       }
     ?>
     </div>
