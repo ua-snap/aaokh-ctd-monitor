@@ -13,15 +13,26 @@
     </div>
     <div class="container">
     <?php
-      $directory = 'plots';
+      $plotDirectory = 'plots';
+      $plotQuantity = 3;
+
       $ignored = array('.', '..');
 
-      foreach (scandir($directory) as $file) {
+      $fileTimes = array();
+      foreach (scandir($plotDirectory) as $file) {
         if (!in_array($file, $ignored)) {
-          $fullPath = $directory . '/' . $file;
-          print '<h3>' . date('F d Y', filemtime($fullPath)) . '</h3>';
-          print '<a href="' . $fullPath . '"><img src="' . $fullPath . '" class="plot"></a>'; 
+          $fullPath = $plotDirectory . '/' . $file;
+          $fileTimes[$fullPath] = filemtime($fullPath);
         }
+      }
+
+      asort($fileTimes);
+      $sortedFiles = array_keys($fileTimes);
+      $topFiles = array_slice($sortedFiles, 0, $plotQuantity);
+
+      foreach ($topFiles as $file) {
+        print '<h3>' . date('F d Y', filemtime($file)) . '</h3>';
+        print '<a href="' . $file . '"><img src="' . $file . '" class="plot"></a>';
       }
     ?>
     </div>
