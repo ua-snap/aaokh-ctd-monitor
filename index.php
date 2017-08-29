@@ -15,6 +15,10 @@
     <?php
       $plotDirectory = 'plots';
       $plotQuantity = 3;
+
+      $dataDirectory = 'data';
+      $dataQuantity = 3;
+
       $ignored = array('.', '..');
 
       function getRecentFiles($directory, $quantity) {
@@ -36,6 +40,13 @@
         print '<h3>' . date('F d Y', filemtime($plotFile)) . '</h3>';
         print '<a href="' . $plotFile . '"><img src="' . $plotFile . '" class="plot"></a>';
       }
+
+      print '<ul>';
+      $recentData = getRecentFiles($dataDirectory, $dataQuantity);
+      foreach ($recentData as $dataFile) {
+        print '<li><a href="' . $dataFile . '">' . date('F d Y', filemtime($dataFile)) . '</a></li>';
+      }
+      print '</ul>';
     ?>
     </div>
   </body>
